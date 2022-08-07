@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The climate news api</h1>
+    <p id="para"></p>
+    <button onClick="fetchapi()">Click</button>
+    <script>
+        var para = document.getElementById('para');
+      async  function fetchapi(){
+       const req = await fetch('http://localhost:5000/news/guardian');
+         const data = await req.json();
+            para.innerHTML = `${data.map((item)=>{
+                return `${item.title}<br>`;
+            })}`;
+
+        }
+    </script>
+</body>
+</html>
